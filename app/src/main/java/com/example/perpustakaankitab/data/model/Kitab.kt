@@ -10,5 +10,6 @@ data class Kitab(
     val pengarang: String,
     @SerialName("isi_kitab")
     val isiKitab: String,
-    val ringkasan: String
+    val ringkasan: String,
+    val tema: String
 )

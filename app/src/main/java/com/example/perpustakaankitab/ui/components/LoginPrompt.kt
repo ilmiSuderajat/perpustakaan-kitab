@@ -1,5 +1,4 @@
-package com.example.perpustakaankitab.ui.screen
-
+package com.example.perpustakaankitab.ui.components
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,7 +36,7 @@ import io.github.jan.supabase.compose.auth.composable.rememberSignInWithGoogle
 import io.github.jan.supabase.compose.auth.composeAuth
 
 @Composable
-fun LoginScreen(
+fun LoginPrompt(
     viewModel: KitabViewModel,
     onLoginSuccess: () -> Unit
 ) {

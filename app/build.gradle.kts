@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play)
+    implementation(libs.androidx.material3)
     implementation(libs.google.identity)
     implementation(libs.supabase.compose.auth)
     implementation(libs.supabase.compose.auth.ui)

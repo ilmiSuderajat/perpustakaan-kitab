@@ -12,15 +12,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.perpustakaankitab.ui.components.KitabCard
 import com.example.perpustakaankitab.ui.viewmodel.KitabViewModel
+import com.example.perpustakaankitab.ui.viewmodel.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun KitabScreen(
-    viewModel: KitabViewModel,
+    profileViewModel: ProfileViewModel,
+    kitabViewModel: KitabViewModel,
     onKitabClick: (String) -> Unit
 ){
-    val kitab = viewModel.kitab.value
+    val profile = profileViewModel.profile.value
+    val semuaKitab = kitabViewModel.kitab.value
 
+    val kitabFiltered = if (profile?.tema == "Semua" || profile == null) {
+        semuaKitab // tampilkan semua
+    } else {
+        semuaKitab.filter { it.tema == profile.tema } // filter by tema
+    }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -34,7 +42,7 @@ fun KitabScreen(
             modifier = Modifier.padding(paddingValues).padding(16.dp)
         ) {
 
-        items(kitab) { kitab ->
+        items(kitabFiltered) { kitab ->
             KitabCard(
                 kitab = kitab,
                 onclick = {onKitabClick(kitab.id)}

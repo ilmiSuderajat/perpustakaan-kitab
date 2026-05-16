@@ -51,4 +51,15 @@ class KitabViewModel : ViewModel(){
         }
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            try {
+                SupabaseClient.client.auth.signOut()
+                isLoggedIn.value = false
+            } catch (e: Exception) {
+                Log.e("KitabViewModel", "Error logout: ${e.message}")
+            }
+        }
+    }
+
 }

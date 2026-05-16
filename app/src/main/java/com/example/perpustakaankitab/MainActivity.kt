@@ -8,6 +8,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.perpustakaankitab.ui.navigation.NavGraph
 import com.example.perpustakaankitab.ui.theme.PerpustakaanKitabTheme
 import com.example.perpustakaankitab.ui.viewmodel.KitabViewModel
+import com.example.perpustakaankitab.ui.viewmodel.KoleksiViewModel
+import com.example.perpustakaankitab.ui.viewmodel.ProfileViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,9 +17,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PerpustakaanKitabTheme {
-                val viewModel: KitabViewModel = viewModel()
+                val kitabViewModel: KitabViewModel = viewModel()
+                val koleksiViewModel: KoleksiViewModel = viewModel()
+                val profileViewModel: ProfileViewModel = viewModel()
+
                 NavGraph(
-                    viewModel = viewModel
+                    kitabViewModel = kitabViewModel,
+                    koleksiViewModel = koleksiViewModel,
+                    profileViewModel = profileViewModel
                 )
             }
         }
